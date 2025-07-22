@@ -5,6 +5,8 @@ use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use App\Livewire\Empleados\Index;
+use App\Livewire\Dashboard\Index as DashboardIndex;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -37,5 +39,9 @@ Route::middleware(['auth', 'verified', 'role:SuperAdmin,RRHH'])->group(function 
     Route::get('/empleados', Index::class)->name('empleados.index');
 });
 
+Route::middleware(['auth', 'verified', 'role:SuperAdmin,RRHH'])->group(function () {
+    Route::get('/dashboard-rh', DashboardIndex::class)->name('dashboard.rh');
+});
+
 // Rutas de autenticación (Login, Register, etc.)
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
